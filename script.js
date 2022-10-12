@@ -1,5 +1,6 @@
+// mongoDB server ma install hoga ya clint js ma
 // const listItems = [];
-
+//error status 500
 const addItem = (e) => {
   e.preventDefault();
 
