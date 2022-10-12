@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/shehza-d/ToDoList/issues"
   },
-  "homepage": "https://github.com/shehza-d/ToDoList#readme"
+  "homepage": "https://github.com/shehza-d/ToDoList#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
