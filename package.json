@@ -1,23 +1,25 @@
 {
   "name": "todo",
   "version": "1.0.0",
-  "description": "A simple and minimalistic To-Do List with Local storage of Browser in JavaScript",
-  "main": "script.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.mjs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shehza-d/ToDoList.git"
+    "url": "git+https://github.com/shehza-d/temporary-server-for-ToDo-app.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/shehza-d/ToDoList/issues"
+    "url": "https://github.com/shehza-d/temporary-server-for-ToDo-app/issues"
   },
-  "homepage": "https://github.com/shehza-d/ToDoList#readme",
+  "homepage": "https://github.com/shehza-d/temporary-server-for-ToDo-app#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^4.10.0"
   }
 }

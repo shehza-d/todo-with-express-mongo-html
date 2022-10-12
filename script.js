@@ -1,4 +1,4 @@
-const listItems = [];
+// const listItems = [];
 
 const addItem = (e) => {
   e.preventDefault();
@@ -28,24 +28,24 @@ const addItem = (e) => {
 
 
 
-
+const refresh= ()=>{
     axios
-      .get(`https://quaint-scrubs-cow.cyclic.app/todos`)
-      .then((response) => {
+    .get(`https://quaint-scrubs-cow.cyclic.app/todos`)
+    .then((response) => {
         console.log(response.data);
-  
+        
         document.querySelector("#todoList").innerHTML += "";
         response.data.data.map((eachToDo) => {
-          document.querySelector("#todoList").innerHTML += eachToDo;
-          document.querySelector("#todoList").innerHTML += "<br>";
+            document.querySelector("#todoList").innerHTML += eachToDo;
+            document.querySelector("#todoList").innerHTML += "<br>";
         });
-      })
-      .catch((err) => {
+    })
+    .catch((err) => {
         console.log(err);
-      });
+    });
+}
 
-
-
+ 
 
 
 
