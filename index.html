@@ -10,17 +10,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="shortcut icon" type="image /x-icon" href="../Shehzad-logo.png"   />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
     <title>S ToDo List</title>
 </head>
 
 <body>
         <h1>To Do List</h1>
-    <h2>wo sab kam jo zahan ma hyn idher lekh dalo</h2>
+    <!-- <h2>wo sab kam jo zahan ma hyn idher lekh dalo</h2> -->
 
     <form onsubmit="addItem(event)">
         <input type="text" id="toDoItem" >
+        <button>ADD</button>
     </form>
 
+    <div id="todoList" class="todoList">
+
+    </div>
 
 <script src="./script.js"></script>
 </body>
