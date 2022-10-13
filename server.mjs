@@ -53,7 +53,7 @@ app.get("/todos", (req, res) => {
 });
 
 //empty object mtlb sab kuxh all (on line 59)
-app.delete("todos", (req, res) => {
+app.delete("/todos", (req, res) => {
   todoModel.deleteMany({}, (err) => {
     if (!err) {
       res.send({
