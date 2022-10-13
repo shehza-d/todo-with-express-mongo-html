@@ -1,1 +1,40 @@
-G
+body{
+	display: flex;
+	justify-content: center;
+	/* align-items: center; */
+	/* background: url(./source.unsplash.com_); */
+}
+/* .light{
+	color: white;
+	background-color: black;
+} */
+
+
+
+.heading{
+	text-align: center;
+	color: red;
+}
+.ToDoInput{
+	padding: 20px;
+	width: 300px;
+	/* border: 50px; */
+	border-radius: 50px;
+	text-align: center	;
+	background: transparent;
+
+	backdrop-filter: blur(10px);
+}
+.ToDoInput::placeholder{
+	color: black;
+}
+/* .ToDoInput: */
+
+
+
+
+
+
+*{
+	font-family: serif;
+}

@@ -18,6 +18,12 @@ let todoSchema = new mongoose.Schema({
 const todoModel = mongoose.model("todos", todoSchema);
 
 
+app.get("/", (request, response) => {
+  response.send("Shehzad test first server");
+  console.log(`Shehzad test first server`);
+});
+ 
+
 
 app.post("/todo", (request, response) => {
 
@@ -50,10 +56,7 @@ app.get("/todos", (req, res) => {
   });
 });
 
-// app.get("/sd", (request, response) => {
-//   response.send("testing / routes");
-//   console.log(`testing / routes`);
-// });
+
 
 app.listen(PORT, () => {
   console.log(`Examples app listening on port ${PORT}`);

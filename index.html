@@ -2,31 +2,41 @@
 <html lang="en">
 
 <head>
-    
+
     <meta charset="UTF-8">
-    
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="shortcut icon" type="image /x-icon" href="../Shehzad-logo.png"   />
+
+    <link rel="stylesheet" href="./style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
     <title>S ToDo List</title>
 </head>
 
 <body>
-        <h1>To Do List</h1>
+    <h1 class="heading">To Do List</h1>
     <!-- <h2>wo sab kam jo zahan ma hyn idher lekh dalo</h2> -->
 
     <form onsubmit="addItem(event)">
-        <input type="text" id="toDoItem" min="0" max="1000">
-        <button type="submit">ADD</button>
+        <input type="text" id="toDoItem" class="ToDoInput" placeholder="Your ToDo here!" min="0" max="1000">
+        <!-- <button type="submit">ADD</button> -->
     </form>
-<button onsubmit="refresh()">refresh</button>
+    <!-- <button onsubmit="refreshList()">refresh</button> -->
     <div id="todoList" class="todoList">
+
+        dfhdfh<br>
+        dfhdfh<br>
+        dfhdfh<br>
+        dfhdfh<br>
+        dfhdfh<br>
+        <!-- <ul> </ul> -->
 
     </div>
 
-<script src="./script.js"></script>
+    <script src="./script.js"></script>
 </body>
+
 </html>
