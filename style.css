@@ -1,40 +1,92 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&display=swap');
+
+body {
+	margin: 0px;
 	display: flex;
 	justify-content: center;
-	/* align-items: center; */
-	/* background: url(./source.unsplash.com_); */
+	align-items: center;
+	flex-direction: column;
+	background: url(./img/unsplash-nature.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: 'Manrope', sans-serif;
 }
+
 /* .light{
 	color: white;
 	background-color: black;
 } */
 
 
-
-.heading{
-	text-align: center;
-	color: red;
+.nav-bar {
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	color: rgb(255, 255, 255);
+	display: flex;
+	justify-content: space-between;
 }
-.ToDoInput{
+
+.nav-bar>h1 {
+	margin: 0px;
+	margin-left: 70px;
+	padding: 30px;
+}
+
+.nav-bar>#dateDiv {
+	padding: 22px;
+	text-transform: uppercase;
+}
+
+.nav-bar>#dateDiv>div {
+	margin: 8px;
+}
+
+.ToDoInput {
 	padding: 20px;
 	width: 300px;
-	/* border: 50px; */
+	color: white;
+	background-color: rgba(0, 0, 0, 0.633);
 	border-radius: 50px;
-	text-align: center	;
-	background: transparent;
+	text-align: center;
+	border: 1px solid white;
+	font-size: 30px;
+	backdrop-filter: blur(10px);
+	font-family: inherit;
+}
 
+.ToDoInput::placeholder {
+	color: white;
+}
+
+/* .ToDoInput: */
+.formRow {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.deleteBtn {
+	height: 50px;
+	width: 50px;
+	padding: 5px;
+	border-radius: 50px;
+	background: transparent;
 	backdrop-filter: blur(10px);
 }
-.ToDoInput::placeholder{
-	color: black;
+
+.deleteBtn>svg {
+	width: 25px;
+	fill: white;
 }
-/* .ToDoInput: */
 
-
-
-
-
-
-*{
-	font-family: serif;
+.todoList {
+	border: 1px solid white;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.633);
+	padding: 30px;
+	width: 300px;
+	border-radius: 50px;
+	backdrop-filter: blur(10px);
 }

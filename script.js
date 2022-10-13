@@ -1,8 +1,23 @@
 // mongoDB server ma install hoga ya clint js ma
 //error status 500
 
-const API_KEY = "https://gray-exuberant-nightingale.cyclic.app";
+const API = "https://gray-exuberant-nightingale.cyclic.app";
 
+//getting time function
+(() => {
+  const dateTimeDiv = document.querySelector("#dateDiv");
+  const dateDiv = document.createElement("div");
+  const time = document.createElement("div");
+  let tim = moment().format("h:mm:s a");
+  dateDiv.appendChild(
+    document.createTextNode(`${moment().format("D MMM YYYY")}`)
+  );
+  time.appendChild(document.createTextNode(`${tim}`));
+  dateTimeDiv.appendChild(dateDiv);
+  dateTimeDiv.appendChild(time);
+})();
+
+//
 const addItem = (e) => {
   e.preventDefault();
   const toDoItem = document.querySelector("#toDoItem").value;
@@ -17,7 +32,7 @@ const addItem = (e) => {
   document.querySelector("#todoList").innerHTML += "<br>";
 
   axios
-    .post(`${API_KEY}/todo`, {
+    .post(`${API}/todo`, {
       text: toDoItem,
     })
     .then((response) => {
@@ -31,13 +46,15 @@ const addItem = (e) => {
 
 const refreshList = () => {
   axios
-    .get(`${API_KEY}/todos`)
+    .get(`${API}/todos`)
     .then((response) => {
       console.log(response.data);
 
       document.querySelector("#todoList").innerHTML = "";
       response.data.data.map((eachToDo) => {
-        document.querySelector("#todoList").innerHTML += `<li>${eachToDo.text}</li>`;
+        document.querySelector(
+          "#todoList"
+        ).innerHTML += `<li>${eachToDo.text}</li>`;
       });
     })
     .catch((err) => {
@@ -48,7 +65,17 @@ refreshList();
 // setInterval(getAllTodos, 5000);//this is not recommanded (use socket.io for realtime apps )
 
 const deleteToDoList = () => {
+  alert("Are You sure you want to Delete all todos?");
+  axios
+    .delete(`${API}/todos`)
+    .then((response) => {
+      console.log(response.data);
 
+      // document.querySelector("#todoList").innerHTML = "";
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 // setInterval(refreshList, 6000);
