@@ -17,16 +17,12 @@ let todoSchema = new mongoose.Schema({
 });
 const todoModel = mongoose.model("todos", todoSchema);
 
-
 app.get("/", (request, response) => {
   response.send("Shehzad test first server");
   console.log(`Shehzad test first server`);
 });
- 
-
 
 app.post("/todo", (request, response) => {
-
   todoModel.create({ text: request.body.text }, (err, saved) => {
     if (!err) {
       console.log("saved");
@@ -56,7 +52,42 @@ app.get("/todos", (req, res) => {
   });
 });
 
+//empty object mtlb sab kuxh all (on line 59)
+app.delete("todos", (req, res) => {
+  todoModel.deleteMany({}, (err, data) => {
+    if (!err) {
+      res.send({
+        message: "all todos deleted successfully",
+      });
+    } else {
+      res.status(500).send({
+        message: "server error",
+      });
+    }
+  });
+});
 
+//to delete selected todo
+//:id is URL parameter
+app.delete("todo/:id", (req, res) => {
+  todoModel.deleteOne({ _id: req.params.id }, (err, data) => {
+    if (!err) {
+      if (deletedData.deletedCount !== 0) {
+        res.send({
+          message: "One Todo has been deleted successfully",
+        });
+      } else {
+        res.send({
+          message: "No todo found with this id ",
+        });
+      }
+    } else {
+      res.status(500).send({
+        message: "server error",
+      });
+    }
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Examples app listening on port ${PORT}`);

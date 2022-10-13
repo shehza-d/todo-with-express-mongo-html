@@ -11,8 +11,11 @@ const addItem = (e) => {
     alert("string can't be greater then 30");
     return;
   }
+  // if(!toDoItem) console.log(`emty str`)
   if (toDoItem === "") return;
-  //   console.log(toDoItem1);
+  document.querySelector("#todoList").innerHTML += toDoItem;
+  document.querySelector("#todoList").innerHTML += "<br>";
+
   axios
     .post(`${API_KEY}/todo`, {
       text: toDoItem,
@@ -20,15 +23,6 @@ const addItem = (e) => {
     .then((response) => {
       console.log(response.data.message);
       refreshList();
-      // document.querySelector("#messagesss").innerHTML = response.data.message;
-      // setTimeout(() => {
-      //   document.querySelector("#messagesss").innerHTML = "";
-      // }, 2000);
-      // document.querySelector("#todoList").innerHTML += "";
-      // response.data.data.map((eachToDo) => {
-      //   document.querySelector("#todoList").innerHTML += eachToDo;
-      //   document.querySelector("#todoList").innerHTML += "<br>";
-      // });
     })
     .catch((err) => {
       console.log(err);
@@ -43,8 +37,7 @@ const refreshList = () => {
 
       document.querySelector("#todoList").innerHTML = "";
       response.data.data.map((eachToDo) => {
-        document.querySelector("#todoList").innerHTML += eachToDo.text;
-        document.querySelector("#todoList").innerHTML += "<br>";
+        document.querySelector("#todoList").innerHTML += `<li>${eachToDo.text}</li>`;
       });
     })
     .catch((err) => {
@@ -52,8 +45,11 @@ const refreshList = () => {
     });
 };
 refreshList();
+// setInterval(getAllTodos, 5000);//this is not recommanded (use socket.io for realtime apps )
 
-const deleteToDoList = () => {};
+const deleteToDoList = () => {
+
+};
 
 // setInterval(refreshList, 6000);
 // const myGetDataFunction = async () => {
