@@ -21,18 +21,13 @@
     <!-- <h2>wo sab kam jo zahan ma hyn idher lekh dalo</h2> -->
 
     <form onsubmit="addItem(event)">
-        <input type="text" id="toDoItem" class="ToDoInput" placeholder="Your ToDo here!" min="0" max="1000">
+        <input type="text" id="toDoItem" class="ToDoInput" placeholder="Your ToDo here!" min="0" max="100" required>
         <!-- <button type="submit">ADD</button> -->
     </form>
+    <button onclick="deleteToDoList()">Delete All</button>
     <!-- <button onsubmit="refreshList()">refresh</button> -->
     <div id="todoList" class="todoList">
-
-        dfhdfh<br>
-        dfhdfh<br>
-        dfhdfh<br>
-        dfhdfh<br>
-        dfhdfh<br>
-        <!-- <ul> </ul> -->
+        <ul> </ul>
 
     </div>
 
