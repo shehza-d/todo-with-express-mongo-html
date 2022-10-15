@@ -1,6 +1,19 @@
 // mongoDB server ma install hoga ya clint js ma
 //error status 500
 
+//most optimize date funtion
+// (() => {
+// 	document.querySelector("#date").textContent = `${moment().format("D MMM YYYY")}`;
+// 	let time= moment().format("h:mm:s a")
+// 	const timeDiv = document.querySelector("#time").textContent =  time;		
+// 	setInterval(() => {
+// 		 time = moment().format("h:mm:s a");
+// 		 timeDiv =   time;		
+// 	}, 1000);
+//   })();
+
+
+
 const API = "https://gray-exuberant-nightingale.cyclic.app";
 
 //getting time function
