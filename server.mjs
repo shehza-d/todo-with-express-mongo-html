@@ -22,6 +22,21 @@ app.get("/", (request, response) => {
   console.log(`Shehzad test first server`);
 });
 
+app.get("/todos", (req, res) => {
+  todoModel.find({}, (err, data) => {
+    if (!err) {
+      res.send({
+        message: "here is you todo list",
+        data: data,
+      });
+    } else {
+      res.status(500).send({
+        message: "server error",
+      });
+    }
+  });
+});
+
 app.post("/todo", (request, response) => {
   todoModel.create({ text: request.body.text }, (err, saved) => {
     if (!err) {
@@ -37,19 +52,22 @@ app.post("/todo", (request, response) => {
   });
 });
 
-app.get("/todos", (req, res) => {
-  todoModel.find({}, (err, data) => {
-    if (!err) {
-      res.send({
-        message: "here is you todo list",
-        data: data,
-      });
-    } else {
-      res.status(500).send({
-        message: "server error",
-      });
-    }
-  });
+app.put("/todo/:id", async (req, res) => {
+  try {
+    let updatedData = await todoModel
+      .findByIdAndUpdate(req.params.id, { text: req.body.text })
+      .exec();
+    console.log(updatedData);
+
+    res.send({
+      message: "todo has been updated successfully",
+      data: updatedData,
+    });
+  } catch (err) {
+    res.status(500).send({
+      message: "server errror",
+    });
+  }
 });
 
 //empty object mtlb sab kuxh all (on line 59)
