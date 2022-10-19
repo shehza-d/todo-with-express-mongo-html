@@ -1,7 +1,20 @@
 // mongoDB server ma install hoga ya clint js ma
 //error status 500
 
-const API = "https://gray-exuberant-nightingale.cyclic.app";
+//most optimize date funtion
+// (() => {
+// 	document.querySelector("#date").textContent = `${moment().format("D MMM YYYY")}`;
+// 	let time= moment().format("h:mm:s a");
+// 	const timeDiv = document.querySelector("#time");
+// 	timeDiv.textContent = time;
+// 	setInterval(() => {
+// 		time = moment().format("h:mm:s a");
+// 		timeDiv.textContent = time;
+// 	}, 1000);
+//   })();
+
+// const API = "https://gray-exuberant-nightingale.cyclic.app";
+const API = "http://localhost:3002";
 
 //getting time function
 (() => {
@@ -55,6 +68,12 @@ const refreshList = () => {
         document.querySelector(
           "#todoList"
         ).innerHTML += `<li>${eachToDo.text}</li>`;
+        document.querySelector(
+          "#todoList"
+        ).innerHTML += `&nbsp; <button>yes<button/>`
+     
+     
+     
       });
     })
     .catch((err) => {

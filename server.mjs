@@ -22,21 +22,6 @@ app.get("/", (request, response) => {
   console.log(`Shehzad test first server`);
 });
 
-app.post("/todo", (request, response) => {
-  todoModel.create({ text: request.body.text }, (err, saved) => {
-    if (!err) {
-      console.log("saved");
-      response.send({
-        message: "your data is saved",
-      });
-    } else {
-      response.status(500).send({
-        message: "error hy koi server ma",
-      });
-    }
-  });
-});
-
 app.get("/todos", (req, res) => {
   todoModel.find({}, (err, data) => {
     if (!err) {
@@ -52,8 +37,41 @@ app.get("/todos", (req, res) => {
   });
 });
 
+app.post("/todo", (request, response) => {
+  todoModel.create({ text: request.body.text }, (err, saved) => {
+    if (!err) {
+      console.log("saved");
+      response.send({
+        message: "your data is saved",
+      });
+    } else {
+      response.status(500).send({
+        message: "error hy koi server ma",
+      });
+    }
+  });
+});
+
+app.put("/todo/:id", async (req, res) => {
+  try {
+    let updatedData = await todoModel
+      .findByIdAndUpdate(req.params.id, { text: req.body.text })
+      .exec();
+    console.log(updatedData);
+
+    res.send({
+      message: "todo has been updated successfully",
+      data: updatedData,
+    });
+  } catch (err) {
+    res.status(500).send({
+      message: "server errror",
+    });
+  }
+});
+
 //empty object mtlb sab kuxh all (on line 59)
-app.delete("todos", (req, res) => {
+app.delete("/todos", (req, res) => {
   todoModel.deleteMany({}, (err) => {
     if (!err) {
       res.send({
