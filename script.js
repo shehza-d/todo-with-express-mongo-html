@@ -67,7 +67,7 @@ const refreshList = () => {
       response.data.data.map((eachToDo) => {
         document.querySelector(
           "#todoList"
-        ).innerHTML += `<li>${eachToDo.text} &nbsp;<button onclick="deleteTodo('${eachToDo._id}')">Delete<button/></li>`;
+        ).innerHTML += `<li>${eachToDo.text} &nbsp;<button onclick="deleteTodo('${eachToDo._id}')">Delete<button/>&nbsp;<button onclick="editTodo('${eachToDo._id}')">Edit<button/> </li>`;
         // document.querySelector(
         //   "#todoList"
         // ).innerHTML += `&nbsp; `
@@ -95,23 +95,33 @@ const deleteToDoList = () => {
 };
 
 const deleteTodo = async (id) => {
-  
-  try{
-    let response = await axios.delete(`${API}/todo/${id}`)
+  try {
+    let response = await axios.delete(`${API}/todo/${id}`);
 
-    console.log(response.data.message)
+    console.log(response.data.message);
 
     refreshList();
-
-
-  }catch (err){
-    console.log(`error`,err)
-    
+  } catch (err) {
+    console.log(`error`, err);
   }
-  
- 
 };
 
+const editTodo = async (id) => {
+  let newValue = prompt("ests");
+  try {
+    console.log(id);
+
+    let response = await axios.put(`${API}/todo/${id}`, {
+      text: newValue,
+    });
+
+    console.log(response.data.message);
+
+    refreshList();
+  } catch (err) {
+    console.log(`error`, err);
+  }
+};
 // setInterval(refreshList, 6000);
 // const myGetDataFunction = async () => {
 //   await fetch(

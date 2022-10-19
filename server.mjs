@@ -89,9 +89,8 @@ app.delete("/todos", (req, res) => {
 //:id is URL parameter
 app.delete("/todo/:id", (req, res) => {
   todoModel.deleteOne({ _id: req.params.id }, (err, deletedData) => {
-    
     console.log("deleted: ", deletedData);
-     
+
     if (!err) {
       if (deletedData.deletedCount !== 0) {
         res.send({
