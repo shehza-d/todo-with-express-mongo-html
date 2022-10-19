@@ -67,13 +67,10 @@ const refreshList = () => {
       response.data.data.map((eachToDo) => {
         document.querySelector(
           "#todoList"
-        ).innerHTML += `<li>${eachToDo.text}</li>`;
-        document.querySelector(
-          "#todoList"
-        ).innerHTML += `&nbsp; <button>yes<button/>`
-     
-     
-     
+        ).innerHTML += `<li>${eachToDo.text} &nbsp;<button onclick="deleteTodo('${eachToDo._id}')">Delete<button/></li>`;
+        // document.querySelector(
+        //   "#todoList"
+        // ).innerHTML += `&nbsp; `
       });
     })
     .catch((err) => {
@@ -95,6 +92,24 @@ const deleteToDoList = () => {
     .catch((err) => {
       console.log(err);
     });
+};
+
+const deleteTodo = async (id) => {
+  
+  try{
+    let response = await axios.delete(`${API}/todo/${id}`)
+
+    console.log(response.data.message)
+
+    refreshList();
+
+
+  }catch (err){
+    console.log(`error`,err)
+    
+  }
+  
+ 
 };
 
 // setInterval(refreshList, 6000);
