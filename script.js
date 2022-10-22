@@ -13,8 +13,8 @@
 // 	}, 1000);
 //   })();
 
-// const API = "https://gray-exuberant-nightingale.cyclic.app";
-const API = "http://localhost:3002";
+const API = "https://gray-exuberant-nightingale.cyclic.app";
+// const API = "http://localhost:3002";
 
 //getting time function
 (() => {
