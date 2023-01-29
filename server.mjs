@@ -113,9 +113,11 @@ app.listen(PORT, () => {
   console.log(`Examples app listening on port ${PORT}`);
 });
 
+//"mongodb+srv://shehza-d:web123@cluster0.egqvqca.mongodb.net/firstdatabase?retryWrites=true&w=majority";
 //MongoDB
 const dbURI =
-  "mongodb+srv://shehza-d:web123@cluster0.egqvqca.mongodb.net/firstdatabase?retryWrites=true&w=majority";
+  "mongodb+srv://shehzad:shehzad@cluster0.wclhhvn.mongodb.net/todo-html?retryWrites=true&w=majority"
+  
 mongoose.connect(dbURI);
 
 //for status of DB
