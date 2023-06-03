@@ -2,15 +2,13 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 
-// await mongoose.connect('mongodb+srv://shehza-d:web123@cluster0.egqvqca.mongodb.net/firstdatabase?retryWrites=true&w=majority');
-
 const app = express();
 const PORT = process.env.PORT || 3002;
 
 app.use(cors());
 app.use(express.json());
 
-let todoSchema = new mongoose.Schema({
+const todoSchema = new mongoose.Schema({
   text: { type: String, require: true },
   classID: String,
   createdDate: { type: Date, default: Date.now },
@@ -18,8 +16,8 @@ let todoSchema = new mongoose.Schema({
 const todoModel = mongoose.model("todos", todoSchema);
 
 app.get("/", (request, response) => {
-  response.send("Shehzad test first server");
-  console.log(`Shehzad test first server`);
+  response.send("Shehzad test todo server");
+  console.log(`Shehzad test todo server`);
 });
 
 app.get("/todos", (req, res) => {
@@ -109,41 +107,41 @@ app.delete("/todo/:id", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Examples app listening on port ${PORT}`);
+const connectDB = async () => {
+  try {
+    const myConnection = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB Connected: at $ {myConnection.connection.host}`);
+  } catch (err) {
+    console.log("err", err);
+    process.exit(1);
+  }
+};
+
+//Connect to the database before listening
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Examples app listening on port ${PORT}`);
+  });
 });
 
-//"mongodb+srv://shehza-d:web123@cluster0.egqvqca.mongodb.net/firstdatabase?retryWrites=true&w=majority";
-//MongoDB
-const dbURI =
-  "mongodb+srv://shehzad:shehzad@cluster0.wclhhvn.mongodb.net/todo-html?retryWrites=true&w=majority"
-  
-mongoose.connect(dbURI);
-
-//for status of DB
-////////////////mongodb connected disconnected events///////////////////////////////////////////////
-mongoose.connection.on("connected", function () {
-  //connected
+mongoose.connection.on("connected", () => {
   console.log("Mongoose is connected");
-  // process.exit(1);
 });
 
-mongoose.connection.on("disconnected", function () {
-  //disconnected
+mongoose.connection.on("disconnected", () => {
   console.log("Mongoose is disconnected");
   process.exit(1);
 });
 
-mongoose.connection.on("error", function (err) {
-  //any error
+mongoose.connection.on("error", (err) => {
   console.log("Mongoose connection error: ", err);
   process.exit(1);
 });
 
-process.on("SIGINT", function () {
+process.on("SIGINT", () => {
   /////this function will run jst before app is closing
   console.log("app is terminating");
-  mongoose.connection.close(function () {
+  mongoose.connection.close(() => {
     console.log("Mongoose default connection closed");
     process.exit(0);
   });
